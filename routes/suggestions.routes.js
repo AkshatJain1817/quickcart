@@ -3,6 +3,13 @@ const router = express.Router();
 const protect = require('../middleware/auth.middleware');
 const cartMap = require('../memory/cart.memory');
 
+
+//this is a dummy suggestion feature that suggests items based on the time of the day 
+//if user logged in at 10 am it will suggest milk, bread, eggs, coffee, tea
+//if user logged in at 2 pm it will suggest fruits, vegetables, snacks, juice
+//if user logged in at 8 pm it will suggest maggi, biscuits, chips, ice cream, cola
+//here we can add a ai  model to suggest items based on the user's previous purchases and preferences
+
 function getSuggestions(userId) {
     const hour = new Date().getHours();
     const cart = cartMap.get(userId) || { items: [] };
